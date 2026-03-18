@@ -1,0 +1,82 @@
+{
+  "ollama": {
+    "base_url": "http://localhost:11434/v1",
+    "api_key": "ollama"
+  },
+  "langfuse": {
+    "public_key": "${LANGFUSE_PUBLIC_KEY}",
+    "secret_key": "${LANGFUSE_SECRET_KEY}",
+    "host": "${LANGFUSE_HOST}"
+  },
+  "models": {
+    "answer_model": "llama3.1:latest",
+    "answer_model_alt": "mistral:latest",
+    "judge_model": "qwen3:14b"
+  },
+  "dataset": {
+    "name": "multi-turn-conversations2",
+    "max_turns": 6
+  },
+  "evaluation_metrics": {
+    "relevance": {
+      "name": "relevance",
+      "description": "Evaluate if the assistant's response is relevant to the user's question",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": {
+          "5": "Perfectly addresses the user's question",
+          "4": "Mostly relevant with minor tangents",
+          "3": "Partially relevant",
+          "2": "Minimally relevant",
+          "1": "Not relevant at all"
+        }
+      }
+    },
+    "accuracy": {
+      "name": "accuracy",
+      "description": "Evaluate if the information is factually correct",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": {
+          "5": "All information is factually correct",
+          "4": "Mostly accurate with minor errors",
+          "3": "Some accurate information, some errors",
+          "2": "Mostly inaccurate",
+          "1": "Completely inaccurate"
+        }
+      }
+    },
+    "helpfulness": {
+      "name": "helpfulness",
+      "description": "Evaluate if the response helps the user",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": {
+          "5": "Extremely helpful, fully addresses needs",
+          "4": "Very helpful with actionable information",
+          "3": "Somewhat helpful",
+          "2": "Minimally helpful",
+          "1": "Not helpful at all"
+        }
+      }
+    },
+    "clarity": {
+      "name": "clarity",
+      "description": "Evaluate if the response is clear and well-structured",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": {
+          "5": "Extremely clear and well-structured",
+          "4": "Clear with good structure",
+          "3": "Moderately clear",
+          "2": "Somewhat unclear or confusing",
+          "1": "Very unclear or poorly structured"
+        }
+      }
+    }
+  }
+}
