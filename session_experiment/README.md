@@ -2,19 +2,19 @@
 
 A comprehensive system for running multi-turn conversation experiments between AI agents with session-level evaluation and tracing using Langfuse.
 
-## 📋 Overview
+## Overview
 
 This project simulates realistic multi-turn conversations between a chatbot and a simulated user, evaluates the conversations using LLM-as-a-Judge methodology, and tracks all interactions with Langfuse for observability and analysis.
 
 **Key Features:**
-- 🤖 Multi-turn conversation simulation with configurable personas and scenarios
-- 📊 Session-level evaluation metrics (relevance, accuracy, helpfulness, clarity)
-- 🔍 Complete tracing and observability with Langfuse
-- 📈 Structured experiment runs with dataset integration
-- 🧬 Local LLM support via Ollama
-- 📝 Jupyter notebook support for interactive analysis
+- Multi-turn conversation simulation with configurable personas and scenarios
+- Session-level evaluation metrics (relevance, accuracy, helpfulness, clarity)
+- Complete tracing and observability with Langfuse
+- Structured experiment runs with dataset integration
+- Local LLM support via Ollama
+- Jupyter notebook support for interactive analysis
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Langfuse_project/
@@ -41,7 +41,7 @@ Langfuse_project/
 └── venv_py313/            # Python virtual environment
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -104,7 +104,7 @@ ollama pull llama3:latest
 ollama pull mistral:latest
 ```
 
-## 📖 Usage
+## Usage
 
 ### Running Session-Level Experiments
 
@@ -240,7 +240,7 @@ from utils.utils import logger
 logger.info("Starting experiment...")
 ```
 
-## 📊 Experiment Flow
+## Experiment Flow
 
 ```
 ┌─────────────────────────────────────────┐
@@ -270,14 +270,14 @@ logger.info("Starting experiment...")
 └─────────────────────────────────────────┘
 ```
 
-## 🧪 Testing
+## Testing
 
 Run basic tests:
 ```bash
 python test.py
 ```
 
-## 📈 Monitoring Results
+## Monitoring Results
 
 ### In Langfuse UI:
 1. Navigate to **Dataset Runs**
@@ -300,13 +300,13 @@ for run in runs:
         print(f"  Trace: {trace.id}")
 ```
 
-## 🔐 Security
+## Security
 
 - **API Keys**: Store Langfuse credentials in `.env` (never commit!)
 - **Ollama**: Runs locally; configure firewall as needed
 - **Data Privacy**: Review Langfuse data retention policies
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Ollama Connection Issues
 ```
@@ -338,7 +338,7 @@ Error: CUDA out of memory or system memory exhausted
 - Reduce `max_turns` in configuration
 - Reduce `max_concurrency` in evaluation settings
 
-## 📚 Key Dependencies
+## Key Dependencies
 
 | Package | Version | Purpose |
 |---------|---------|---------|
@@ -350,23 +350,21 @@ Error: CUDA out of memory or system memory exhausted
 
 See `requirements.txt` for complete list.
 
-## 📝 Notebooks
+## Notebooks
 
 - **session.ipynb**: Main experiment with session-level evaluation
 - **session2.ipynb**: Alternative experiment configuration for testing
 
-## 🤝 Contributing
+## Contributing
 
 1. Create a feature branch
 2. Make changes to agents, metrics, or utilities
 3. Test with a subset of data
 4. Submit results
 
-## 📄 License
 
-[Add your license here]
 
-## 📞 Support
+## Support
 
 For issues with:
 - **Langfuse**: Check [langfuse.com/docs](https://langfuse.com/docs)
