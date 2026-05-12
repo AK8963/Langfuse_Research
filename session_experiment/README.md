@@ -371,8 +371,4 @@ For issues with:
 - **Ollama**: Visit [ollama.ai](https://ollama.ai)
 - **OpenAI Python Client**: See [github.com/openai/openai-python](https://github.com/openai/openai-python)
 
----
 
-**Last Updated**: May 2026
-**Python Version**: 3.13+
-**Status**: Active Development
