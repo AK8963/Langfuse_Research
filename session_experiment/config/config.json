@@ -1,0 +1,57 @@
+{
+  "ollama": {
+    "base_url": "http://localhost:11434/v1",
+    "api_key": "ollama"
+  },
+  "langfuse": {
+    "public_key": "${LANGFUSE_PUBLIC_KEY}",
+    "secret_key": "${LANGFUSE_SECRET_KEY}",
+    "LANGFUSE_BASE_URL": "${LANGFUSE_HOST}"
+  },
+  "models": {
+    "answer_model": "llama3:latest",
+    "answer_model_alt": "llama3:latest",
+    "judge_model": "mistral:latest"
+  },
+  "dataset": {
+    "name": "6-turn-travel-conversations",
+    "max_turns": 6
+  },
+  "evaluation": {
+    "retry_attempts": 3,
+    "timeout_seconds": 30,
+    "max_concurrency": 5
+  },
+  "evaluators": {
+    "session_metrics": [
+      {
+        "name": "session_relevance",
+        "enabled": true,
+        "weight": 1.0,
+        "system_prompt": "You are an expert conversation evaluator specializing in relevance assessment.",
+        "evaluation_prompt": "Evaluate the overall RELEVANCE of this multi-turn conversation.\n\n# USER CONTEXT\nPersona: {persona}\nScenario: {scenario}\n\n# CONVERSATION\n{conversation_text}\n\n# CRITERIA\nScore 1-5:\n- 5: All responses stay on topic throughout\n- 4: Mostly relevant with minor deviations\n- 3: Partially relevant\n- 2: Frequently off-topic\n- 1: Consistently irrelevant\n\nReturn ONLY a JSON object:\n{{\n  \"score\": <int 1-5>,\n  \"reasoning\": \"Brief explanation\"\n}}"
+      },
+      {
+        "name": "session_accuracy",
+        "enabled": true,
+        "weight": 1.5,
+        "system_prompt": "You are an expert conversation evaluator specializing in accuracy assessment.",
+        "evaluation_prompt": "Evaluate the overall ACCURACY of this multi-turn conversation.\n\n# USER CONTEXT\nPersona: {persona}\nScenario: {scenario}\n\n# CONVERSATION\n{conversation_text}\n\n# CRITERIA\nScore 1-5:\n- 5: All information consistently accurate\n- 4: Mostly accurate throughout\n- 3: Mixed accuracy\n- 2: Frequently inaccurate\n- 1: Consistently inaccurate\n\nReturn ONLY a JSON object:\n{{\n  \"score\": <int 1-5>,\n  \"reasoning\": \"Brief explanation\"\n}}"
+      },
+      {
+        "name": "session_helpfulness",
+        "enabled": true,
+        "weight": 1.2,
+        "system_prompt": "You are an expert conversation evaluator specializing in helpfulness assessment.",
+        "evaluation_prompt": "Evaluate the overall HELPFULNESS of this multi-turn conversation.\n\n# USER CONTEXT\nPersona: {persona}\nScenario: {scenario}\n\n# CONVERSATION\n{conversation_text}\n\n# CRITERIA\nScore 1-5:\n- 5: Consistently helpful throughout\n- 4: Generally helpful with good guidance\n- 3: Somewhat helpful\n- 2: Minimally helpful\n- 1: Not helpful overall\n\nReturn ONLY a JSON object:\n{{\n  \"score\": <int 1-5>,\n  \"reasoning\": \"Brief explanation\"\n}}"
+      },
+      {
+        "name": "session_clarity",
+        "enabled": true,
+        "weight": 1.0,
+        "system_prompt": "You are an expert conversation evaluator specializing in clarity assessment.",
+        "evaluation_prompt": "Evaluate the overall CLARITY of this multi-turn conversation.\n\n# USER CONTEXT\nPersona: {persona}\nScenario: {scenario}\n\n# CONVERSATION\n{conversation_text}\n\n# CRITERIA\nScore 1-5:\n- 5: Consistently clear and well-structured\n- 4: Generally clear communication\n- 3: Moderately clear\n- 2: Often unclear or confusing\n- 1: Consistently unclear\n\nReturn ONLY a JSON object:\n{{\n  \"score\": <int 1-5>,\n  \"reasoning\": \"Brief explanation\"\n}}"
+      }
+    ]
+  }
+}
